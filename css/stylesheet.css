@@ -7,6 +7,8 @@ body {
 	background: black;
 }
 
+* { cursor: normal; }
+
 #loading {
 	background: url('../img/loading.gif') black no-repeat;
 	background-position: center;

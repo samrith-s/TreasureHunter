@@ -21,9 +21,16 @@ messages.west = 'The treasure is to the west of this city';
 messages.north = 'The treasure is to the north of this city';
 messages.south = 'The treasure is to the south of this city';
 
+messages.findInsufficient = 'Sorry, my friend, you cannot afford that!';
+messages.findFail = 'No treasure here, buddy! That was a waste of 500 gold.'
+messages.victory = 'You have found the treasure! Indiana Jones would be proud of you!';
+messages.defeat = 'You have died a slow and painful death without reaching anywhere near the treasure!';
 messages.instructions = 
 	'Move by clicking on the cities. Click to select and double click to use a card.' +
 	' You lose when health drops to zero.';
+
+messages.travel_button = 'Lose 20 life and travel to another city';
+messages.find_button = 'Use 500 gold to hunt for treasure';
 
 
 var currencies = {};

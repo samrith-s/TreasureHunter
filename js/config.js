@@ -46,12 +46,12 @@ config.cardholder = {
         allLocations.push({
             name: "find",
             states: [
-                {name: "default", representation: "Lose 500 gold and find the treasure"}
+                {name: "default", representation: messages.find_button}
             ]
         }, {
             name: "travel",
             states: [
-                {name: "default", representation: "Lose 20 life to travel to another city"}
+                {name: "default", representation: messages.travel_button}
             ]
         });
 

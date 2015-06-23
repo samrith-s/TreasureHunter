@@ -145,6 +145,26 @@ observers.cards = function(num, type, resources, quesbank, hasGrail) {
 			resources.health = resources.health - 20;
 		}
 	});
+
+	$('#find').unbind('click').on('click', function() {
+		if(resources.gold>=500) {
+			if(helpers.hasGrail(hasGrail)==='here')
+				helpers.victory(resources);
+			else
+				helpers.notification(messages.findFail, 'Oops!', 'Dismiss', {
+					header: theme.defeatHeaderColor,
+					buttonText: '#fff'
+				}, function(){});
+
+			updateAnim($('#gold span'), resources.gold, resources.gold-500, 500);
+			resources.gold = resources.gold-500;
+		}
+		else
+			helpers.notification(messages.findInsufficient, 'Uh oh!', 'Dismiss', {
+				header: theme.informationHeaderColor,
+				buttonText: '#fff'
+			}, function(){});
+	});
 }
 
 observers.land = function(resources, hasGrail, quesbank) {
@@ -171,7 +191,6 @@ observers.land = function(resources, hasGrail, quesbank) {
 
 observers.playerMove = function(obj) {
 	var this_ = $(obj);
-	
 	animations.move(this_, pos);
 }
 
@@ -259,6 +278,11 @@ cards.helpers.rb = function(resources) {
 
 		resources.health = resources.health-randLifeLoss;
 		resources.gold = resources.gold+randGoldGain;
+
+		helpers.notification("You lost " + randLifeLoss + " life and gained " + randGoldGain + " gold!", "Information", "Dismiss", {
+			header: theme.informationHeaderColor,
+			button: "#fff"
+		}, function() {});
 	}
 };
 
@@ -272,6 +296,11 @@ cards.helpers.br = function(resources) {
 		updateAnim($('#health span'), resources.health, resources.health+(randLifeGain-randLifeLoss),500);
 		
 		resources.health = resources.health+(randLifeGain-randLifeLoss);
+
+		helpers.notification("You lost " + randLifeLoss + " life and gained " + randLifeGain + " life!", "Information", "Dismiss", {
+			header: theme.informationHeaderColor,
+			buttonText: "#fff"
+		}, function() {});
 	}
 };
 
@@ -286,7 +315,10 @@ cards.helpers.rw = function(resources) {
 	resources.health = resources.health + randLifeGain;
 	resources.gold = resources.gold + (randGoldGain-randGoldLoss);
 
-	return "You lost " + randGoldLoss + " to gain " + randGoldGain + " gold and " + randLifeGain + " life!"
+	helpers.notification("You lost " + randGoldLoss + " gold to gain " + randGoldGain + " gold and " + randLifeGain + " life!", 'Information', 'Dismiss', {
+		header: theme.informationHeaderColor,
+		buttonText: '#fff'
+	}, function() {});
 };
 
 cards.helpers.al = function(resources) {
@@ -299,13 +331,19 @@ cards.helpers.al = function(resources) {
 		else {
 			updateAnim($('#health span'), resources.health, resources.health-randLifeGainLoss, 500);
 			resources.health = resources.health - randLifeGainLoss;
-			return "You lost " + randLifeGainLoss + "life!";
+			helpers.notification("You lost " + randLifeGainLoss + " life!", "Information" , "Dismiss", {
+				header: theme.informationHeaderColor,
+				buttonText: '#fff'
+			}, function() {});
 		}
 	}
 	else {
 		updateAnim($('#health span'), reosurces.health, resources.health+randLifeGainLoss, 500);
 		resources.health = resources.health + randLifeGainLoss;
-		return "You gained " + randLifeGainLoss + "life!";
+		helpers.notification("You gained " + randLifeGainLoss + " life!", "Information", "Dismiss", {
+			header: theme.informationHeaderColor,
+			buttonText: '#fff'
+		}, function() {});
 	}
 };
 
@@ -315,7 +353,10 @@ cards.helpers.he = function(resources) {
 	updateAnim($('#health span'), resources.health, resources.health + randLifeGain, 500);
 	resources.health = resources.health + randLifeGain;
 	
-	return "You gained " + randLifeGain + " life!";
+	helpers.notification("You gained " + randLifeGain + " life!", "Information", "Dismiss", {
+		header: theme.informationHeaderColor,
+		buttonText: '#fff'
+	}, function() {});
 };
 
 cards.helpers.gm = function(resources) {
@@ -324,13 +365,14 @@ cards.helpers.gm = function(resources) {
 	updateAnim($('#gold span'), resources.gold, resources.gold + randGoldGain, 500);
 	resources.gold = resources.gold + randGoldGain;
 
-	return "You gained " + randGoldGain + " gold!";
+	helpers.notification("You gained " + randGoldGain + " gold!", "Information", "Dismiss", {
+		header: theme.informationHeaderColor,
+		buttonText: '#fff'
+	}, function() {});
 };
 
 cards.helpers.quiz = function(resources, quesbank, num, hasGrail) {
 	var question = quesbank.pop();
-
-	console.log(question);
 
 	$('#cardholder').fadeOut();
 	$('#quiz').fadeIn(function() {
@@ -361,40 +403,39 @@ helpers.playQuiz = function(question, quesbank, num, hasGrail) {
             console.log(helpers.hasGrail(hasGrail));
 
         	switch(helpers.hasGrail(hasGrail)) {
-
         		case 'here':
         			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
+        			}, function() {$('#quiz').fadeOut(); $('#cardholder').fadeIn();});
         			break;
 
         		case 'north':
         			helpers.notification(messages.north, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
+        			}, function() {$('#quiz').fadeOut(); $('#cardholder').fadeIn();});
         			break;
 
         		case 'south':
         			helpers.notification(messages.south, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
+        			}, function() {$('#quiz').fadeOut(); $('#cardholder').fadeIn();});
         			break;
 
         		case 'east':
         			helpers.notification(messages.east, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
+        			}, function() {$('#quiz').fadeOut(); $('#cardholder').fadeIn();});
         			break;
 
         		case 'west':
         			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
+        			}, function() {$('#quiz').fadeOut(); $('#cardholder').fadeIn();});
         			break;
         	}
         }
@@ -404,9 +445,12 @@ helpers.playQuiz = function(question, quesbank, num, hasGrail) {
     });
 };
 
-helpers.victory = function(resources, message, hasGrail) {
+helpers.victory = function(resources) {
 	if(resources.health>0)
-		alert(message);
+		helpers.notification(messages.victory, 'victory', 'Play Again', {
+			header: theme.victoryHeaderColor, 
+			buttonText:'#fff'
+		}, function() { location.reload(); });
 };
 
 /*--------------------------
@@ -418,7 +462,7 @@ helpers.defeat = function(resources) {
 	updateAnim($('#health span'), resources.health, 0, 500);
 	resources.health = 0;
 	
-	helpers.notification('You have died a slow and painful death without reaching anywhere near the treasure!', 'defeat', 'Play Again', {
+	helpers.notification(messages.defeat, 'defeat', 'Play Again', {
 			header: theme.defeatHeaderColor, 
 			buttonText:'#fff'
 		}, function() {location.reload(); });
@@ -461,6 +505,11 @@ helpers.hasGrail = function(hasGrail) {
 
 	pos.grail.top = parseFloat(document.getElementById(cities[indx].name).style.top.split('%')[0]);
 	pos.grail.left = parseFloat(document.getElementById(cities[indx].name).style.left.split('%')[0]);
+
+	console.log('======= pos.grail =======')
+	console.log(pos.grail);
+	console.log('======= pos.player =======')
+	console.log(pos.player);
 
 	if($('#player').position().top===$('#' + cities[indx].name).position().top && $('#player').position().left===$('#' + cities[indx].name).position().left )
 		return 'here';
