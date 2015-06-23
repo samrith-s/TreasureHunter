@@ -356,7 +356,43 @@ helpers.playQuiz = function(question, quesbank, num, hasGrail) {
                 shuffle(quesbank);
             }
             else {
-            	switch(helpers.hasGrail(hasGrail))
+            	switch(helpers.hasGrail(hasGrail)) {
+
+            		case 'here':
+            			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
+            				header: theme.informationHeaderColor,
+            				buttonText: '#fff'
+            			}, function() {$('#quiz').fadeOut();});
+            			break;
+
+            		case 'north':
+            			helpers.notification(messages.north, 'The Sphinx', 'Dismiss', {
+            				header: theme.informationHeaderColor,
+            				buttonText: '#fff'
+            			}, function() {$('#quiz').fadeOut();});
+            			break;
+
+            		case 'south':
+            			helpers.notification(messages.south, 'The Sphinx', 'Dismiss', {
+            				header: theme.informationHeaderColor,
+            				buttonText: '#fff'
+            			}, function() {$('#quiz').fadeOut();});
+            			break;
+
+            		case 'east':
+            			helpers.notification(messages.east, 'The Sphinx', 'Dismiss', {
+            				header: theme.informationHeaderColor,
+            				buttonText: '#fff'
+            			}, function() {$('#quiz').fadeOut();});
+            			break;
+
+            		case 'west':
+            			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
+            				header: theme.informationHeaderColor,
+            				buttonText: '#fff'
+            			}, function() {$('#quiz').fadeOut();});
+            			break;
+            	}
             }
         }
         else {
