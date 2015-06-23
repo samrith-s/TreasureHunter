@@ -1,0 +1,33 @@
+#quiz {
+    width: 60%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+    overflow: hidden;
+    display: none;
+}
+
+#statement-area {
+    background: rgba(0, 0, 255, 0.8);
+    left:10%;
+    top:10%;
+    width:100%;
+    height: 30%;
+    padding:20px;
+}
+
+#options-area {
+    left: 10%;
+    width: 100%;
+    height: 40%;
+}
+
+.option-block {
+    list-style: none;
+    margin-left: -12%;
+    cursor: pointer;
+    background: rgba(0, 0, 255, 0.8);
+    margin-top:10px;
+    padding: 10px;
+}
+

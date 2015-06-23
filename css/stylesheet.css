@@ -1,0 +1,386 @@
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+body {
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 1vw;
+	background: black;
+}
+
+#loading {
+	background: url('../img/loading.gif') black no-repeat;
+	background-position: center;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index:1000;
+}
+
+#land {
+	background: url('http://theoceancollective.com/pelagial/wp-content/themes/theocean/images/the-ocean_bg2.jpg');
+	background-size: cover;
+}
+
+#land .location {
+	width: 12%;
+	height: 12%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#land .location:after {
+	content: attr(id);
+	color: #fff;
+	text-shadow: 0 2px #000;
+	font-size:3em;
+	position: relative;
+	top:0%;
+	width:auto;
+	text-align: center;
+	padding: 7%;
+	background: rgba(1,1,1,0.5);
+	border-radius: 5px;
+	left:-3.5%;
+}
+
+#player {
+	width: 12%;
+	height: 10%;
+	top: 87.5%;
+	left: 80%;
+}
+
+.blur {
+	-webkit-filter: blur(5px);
+  	-moz-filter: blur(5px);
+  	-o-filter: blur(5px);
+  	-ms-filter: blur(5px);
+  	filter: blur(5px);
+}
+
+.greyscale-25 {
+	-webkit-filter: grayscale(50%);
+	-moz-filter: grayscale(50%);
+	-o-filter: grayscale(50%);
+	-ms-filter: grayscale(50%);
+	filter: grayscale(50%);
+}
+
+.greyscale-50 {
+	-webkit-filter: grayscale(80%);
+	-moz-filter: grayscale(80%);
+	-o-filter: grayscale(80%);
+	-ms-filter: grayscale(80%);
+	filter: grayscale(80%);
+}
+
+.greyscale-100 {
+	-webkit-filter: grayscale(100%) contrast(100%);
+	-moz-filter: grayscale(100%) contrast(100%);
+	-o-filter: grayscale(100%) contrast(100%);
+	-ms-filter: grayscale(100%) contrast(100%);
+	filter: grayscale(100%) contrast(100%);
+}
+
+.no-click { pointer-events: none; }
+
+#quiz { display: none; }
+
+#cardholder {
+	width:90%;
+	height:90%;
+	top: 5%;
+	left: 5%;
+	text-align: center;
+	display: none;
+}
+
+.card-item {
+	width:90%;
+	height: 20%;
+	display: inline-block;
+	position: absolute;
+	left:5%;
+	background: url('../img/card_bg.jpg') repeat;
+	background-size: 100%;
+	box-shadow: 0 0 15px 2px #000;
+	border: 0;
+	-webkit-transition: all 0.5s ease-in-out; /* Safari */
+    transition: transform 0.5s;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 7px;
+	border: 1px solid #000;
+	text-align:left;
+	color: #fff;
+	text-shadow: 0 2px #000;
+}
+
+.card-item:active {
+	-ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari */
+    transform: scale(1.1);
+	opacity: 1;
+}
+
+.card-item:nth-child(1) {
+	top:20%;
+}
+
+.card-item:nth-child(2) {
+	top:35%;
+}
+
+.card-item:nth-child(3) {
+	top:50%;
+}
+
+.card-active {
+	/*background: #fff;*/
+	z-index: 2 !important;
+	-ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari */
+    transform: scale(1.1);
+}
+
+.card-img {
+	height: 90%;
+	margin: 1.75%;
+	width: auto;
+	position: absolute;
+	display: inline-block;
+	border-radius: 5px;
+	left: 1%;
+}
+
+.card-desc {
+	font-size: 2.5em;
+	width: 62%;
+	border-radius: 5px;
+	padding: 1% 3% 0;
+	margin: 0;
+	left: 30%;
+	position: absolute;
+	display: inline-block;
+	top: 39%;
+	background: rgba(1,1,1,0.3);
+	height: 30%;
+}
+
+.card-microdesc {
+	font-size: 2.3em;
+	width: 62%;
+	padding: 1% 3% 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	top: 78%;
+	left: 30%;
+	background: rgba(1,1,1,0.2);
+	border-radius: 5px;
+}
+
+.card-name {
+	font-weight: bolder;
+	font-size: 3em;
+	width: 62%;
+	padding: 1% 3%;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	top: 7%;
+	left: 30%;
+	vertical-align: middle;
+	background: rgba(1,1,1,0.3);
+	border-radius: 5px;
+	color: #ffe100;
+}
+
+.card-type {
+	font-weight: bold;
+	font-size: 2.5em;
+	width: auto;
+	padding: 1% 1% 0.5%;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	top: 10%;
+	right: 2.5%;
+	background: rgba(1,1,1,0.3);
+	border-radius: 5px;
+	height: auto;
+}
+
+#hud {
+	width: 20%;
+	left: 78%;
+	top: 2%;
+	height:12%;
+	text-align: right;
+}
+
+#hud img {
+	vertical-align: middle;
+	width:auto;
+}
+
+#health, #gold {
+	display: block;
+	padding-bottom: 5%;
+	width:100%;
+	height:50%;
+	position: static;
+	font-size: 2em;
+	color: #fff;
+	text-shadow: 0 4px 2px #000;
+}
+
+#health span, #gold span {
+	font-weight: bold;
+	font-size: 2em;
+	vertical-align: middle;
+	margin: 6%;	
+}
+
+#find, #travel{
+	height: auto;
+  	background: #9e2c26;
+  	position: absolute;
+  	width: 70%;
+  	top: 79%;
+  	border-radius: 5px;
+  	padding: 2%;
+  	left: 13%;
+  	font-size: 3.5em;
+  	text-align: center;
+  	cursor: pointer;
+  	color: #fff;
+  	text-shadow: 0 3px #000;
+}
+
+#travel { top: 88%; }
+
+#find:hover, #travel:hover {
+	background: #5e1a17;
+	color: #ffe100;
+}
+
+#quiz {
+	font-size: 4em;
+	color: #fff;
+}
+
+#statement-area {
+	width: 86%;
+	display: block;
+	padding: 2%;
+	margin: 2% 5%;
+	height: auto;
+	top: 0%;
+	text-align: center;
+	background: rgba(1,1,1,0.5);
+	color: #fff;
+	position: relative;
+	margin-top: 25%;
+}
+
+#options ul { padding: 0; margin: 0; }
+
+#options ul li {
+	list-style-type: none;
+	width:86%;
+	padding:2%;
+	margin: 2% 5%;
+	text-align: center;
+	background: rgba(1,1,1,0.5);
+}
+
+#options {
+	width: 100%;
+	display: block;
+	height: auto;
+	position: relative;
+}
+
+#knowmore { display: none; }
+
+#blur-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+	height: 100%;
+}
+
+#messages {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	z-index: 999;
+}
+
+.message-container {
+	position: relative;
+	width: 90%;
+	margin: 0 5%;
+	height: 50%;
+	display: block;
+	top: 25%;
+}
+
+.message-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.message-button {
+	width: 20%;
+	margin: 3%;
+	font-size: 2.5em;
+	position: absolute;
+	padding: 2%;
+	background: rgba(1,1,1,0.5);
+	text-align: center;
+	text-transform: uppercase;
+	left: 35%;
+	top:65%;
+	border-radius: 5px;
+	font-weight:normal;
+	cursor: pointer;
+}
+
+.message-button:hover {
+	box-shadow: 0 0 5px 0 #000;
+}
+
+.message-header {
+	width:60%;
+	padding: 2%;
+	position: absolute;
+	top:15%;
+	left:18%;
+	font-size: 5em;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 900;
+	border-bottom: 1px dotted #000;
+}
+
+.message-body {
+	width: 60%;
+	padding: 2%;
+	text-align: center;
+	position: absolute;
+	height:30%;
+	left:18%;
+	top: 32%;
+	font-size:4em;
+}
+
+
+
