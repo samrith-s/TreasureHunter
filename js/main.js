@@ -359,41 +359,42 @@ helpers.playQuiz = function(question, quesbank, num, hasGrail) {
             }
 
             console.log(helpers.hasGrail(hasGrail));
+
         	switch(helpers.hasGrail(hasGrail)) {
 
         		case 'here':
         			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut();});
+        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
         			break;
 
         		case 'north':
         			helpers.notification(messages.north, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut();});
+        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
         			break;
 
         		case 'south':
         			helpers.notification(messages.south, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut();});
+        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
         			break;
 
         		case 'east':
         			helpers.notification(messages.east, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut();});
+        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
         			break;
 
         		case 'west':
         			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
         				header: theme.informationHeaderColor,
         				buttonText: '#fff'
-        			}, function() {$('#quiz').fadeOut();});
+        			}, function() {$('#quiz').fadeOut(); $('#land').removeClass('blur');});
         			break;
         	}
         }
@@ -463,13 +464,13 @@ helpers.hasGrail = function(hasGrail) {
 
 	if($('#player').position().top===$('#' + cities[indx].name).position().top && $('#player').position().left===$('#' + cities[indx].name).position().left )
 		return 'here';
-	if((pos.player.top>pos.grail.top-20) && (pos.player.top<pos.grail.top+20) && (pos.player.left<pos.grail.left))
+	else if((pos.player.top>pos.grail.top-20) && (pos.player.top<pos.grail.top+20) && (pos.player.left<pos.grail.left))
 		return 'east';
-	if((pos.player.top>pos.grail.top-20) && (pos.player.top<pos.grail.top+20) && (pos.player.left>pos.grail.left))
+	else if((pos.player.top>pos.grail.top-20) && (pos.player.top<pos.grail.top+20) && (pos.player.left>pos.grail.left))
 		return 'west';
-	if((pos.player.left>pos.grail.left-10) && (pos.player.left<pos.grail.left+10) && (pos.player.top<pos.grail.top))
+	else if(pos.player.top<pos.grail.top)
 		return 'south';
-	if((pos.player.left>pos.grail.left-10) && (pos.player.left<pos.grail.left+10) && (pos.player.top>pos.grail.top))
+	else if(pos.player.top>pos.grail.top)
 		return 'north';
 
 
