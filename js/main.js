@@ -45,7 +45,9 @@ $(function() {
 		}, function() {});
 
 		event.preventDefault();
-	}).load(function() {
+	})
+
+	$('img').load(function() {
 		$('#loading').fadeOut();
 	});
 });
@@ -355,45 +357,45 @@ helpers.playQuiz = function(question, quesbank, num, hasGrail) {
                 quesbank = Question.all;
                 shuffle(quesbank);
             }
-            else {
-            	switch(helpers.hasGrail(hasGrail)) {
 
-            		case 'here':
-            			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
-            				header: theme.informationHeaderColor,
-            				buttonText: '#fff'
-            			}, function() {$('#quiz').fadeOut();});
-            			break;
+            console.log(helpers.hasGrail(hasGrail));
+        	switch(helpers.hasGrail(hasGrail)) {
 
-            		case 'north':
-            			helpers.notification(messages.north, 'The Sphinx', 'Dismiss', {
-            				header: theme.informationHeaderColor,
-            				buttonText: '#fff'
-            			}, function() {$('#quiz').fadeOut();});
-            			break;
+        		case 'here':
+        			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
+        				header: theme.informationHeaderColor,
+        				buttonText: '#fff'
+        			}, function() {$('#quiz').fadeOut();});
+        			break;
 
-            		case 'south':
-            			helpers.notification(messages.south, 'The Sphinx', 'Dismiss', {
-            				header: theme.informationHeaderColor,
-            				buttonText: '#fff'
-            			}, function() {$('#quiz').fadeOut();});
-            			break;
+        		case 'north':
+        			helpers.notification(messages.north, 'The Sphinx', 'Dismiss', {
+        				header: theme.informationHeaderColor,
+        				buttonText: '#fff'
+        			}, function() {$('#quiz').fadeOut();});
+        			break;
 
-            		case 'east':
-            			helpers.notification(messages.east, 'The Sphinx', 'Dismiss', {
-            				header: theme.informationHeaderColor,
-            				buttonText: '#fff'
-            			}, function() {$('#quiz').fadeOut();});
-            			break;
+        		case 'south':
+        			helpers.notification(messages.south, 'The Sphinx', 'Dismiss', {
+        				header: theme.informationHeaderColor,
+        				buttonText: '#fff'
+        			}, function() {$('#quiz').fadeOut();});
+        			break;
 
-            		case 'west':
-            			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
-            				header: theme.informationHeaderColor,
-            				buttonText: '#fff'
-            			}, function() {$('#quiz').fadeOut();});
-            			break;
-            	}
-            }
+        		case 'east':
+        			helpers.notification(messages.east, 'The Sphinx', 'Dismiss', {
+        				header: theme.informationHeaderColor,
+        				buttonText: '#fff'
+        			}, function() {$('#quiz').fadeOut();});
+        			break;
+
+        		case 'west':
+        			helpers.notification(messages.here, 'The Sphinx', 'Dismiss', {
+        				header: theme.informationHeaderColor,
+        				buttonText: '#fff'
+        			}, function() {$('#quiz').fadeOut();});
+        			break;
+        	}
         }
         else {
             quesbank.unshift(question);
