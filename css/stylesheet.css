@@ -9,6 +9,12 @@ body {
 
 * { cursor: normal; }
 
+img { 
+	background: url('../img/loading.png') no-repeat; 
+	background-position: center;
+	background-size: contain;
+}
+
 #loading {
 	background: url('../img/loading.gif') black no-repeat;
 	background-position: center;

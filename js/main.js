@@ -45,10 +45,6 @@ $(function() {
 		}, function() {});
 
 		event.preventDefault();
-	})
-
-	$('img').load(function() {
-		$('#loading').fadeOut();
 	});
 });
 
@@ -81,6 +77,10 @@ init.environments = function() {
 		hasGrail.push(false);
 
 	hasGrail[randBetween(0, hasGrail.length)] = true;
+
+	$('img').load(function() {
+		$('#loading').fadeOut();
+	});
 
 	// intrvl = setInterval(function() {
 	// 	console.log(helpers.hasGrail(hasGrail));
