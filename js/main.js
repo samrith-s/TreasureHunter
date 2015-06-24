@@ -38,11 +38,17 @@ $(function() {
 	init.JSCSS();
 	// cards.render();
 	init.player();
-	$('*').bind('contextmenu', function(event) {
+
+	$('#ptotemy-game').unbind('contextmenu').bind('contextmenu', function(event) {
+
 		helpers.notification(messages.instructions, 'Instructions', 'Dismiss', {
 			header:theme.informationHeaderColor,
 			buttonText: '#fff'
 		}, function() {});
+
+		$('#messages').unbind('contextmenu').on('contextmenu', function(event) {
+			event.preventDefault();
+		});
 
 		event.preventDefault();
 	});
