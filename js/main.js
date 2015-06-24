@@ -129,14 +129,16 @@ observers.cards = function(num, type, resources, quesbank, hasGrail) {
 			$('.card-item').eq(0).addClass('greyscale-50');
 			$('.card-item').eq(1).addClass('greyscale-25');
 		}
+
 		$(this).addClass('card-active').css({zIndex: 2});
-		if($(this).hasClass('greyscale-100'))
-			$(this).unbind('dblclick');
-		else
-			$('.card-active').unbind('dblclick').on('dblclick', function() {
+
+		if(!$(this).hasClass('greyscale-100')) {
+			$('.card-use', this).show();
+			$('.card-use', this).unbind('click').on('click', function() {
 					cards.click(type, resources, quesbank, num, hasGrail);
-					$(this).addClass('greyscale-100').unbind('dblclick').removeClass('card-active');
+					$('.card-item').eq(num).addClass('greyscale-100').removeClass('card-active').find('.card-use').hide();
 			});
+		}
 	});
 
 	$('#travel').unbind('click').on('click', function() {
@@ -223,8 +225,8 @@ cards.render = function(resources, hasGrail, quesbank) {
 	for(var i=0; i<3; i++) {
 		var randNum = randBetween(0, cilen);
 		$('#card-item-' + (i+1)).addClass('card-item').removeClass('location');
-		$('#card-item-' + (i+1)).find('.card-name').text(card_items[randNum].name);
-		$('#card-item-' + (i+1)).find('.card-type').text(card_items[randNum].type);
+		$('#card-item-' + (i+1)).find('.card-name').text(card_items[randNum].name).attr('data-type', 
+			card_items[randNum].type);
 		$('#card-item-' + (i+1)).find('.card-img').attr('src', $BASE_URL + card_items[randNum].img);
 		$('#card-item-' + (i+1)).find('.card-desc').text(card_items[randNum].desc);
 		$('#card-item-' + (i+1)).find('.card-microdesc').text(card_items[randNum].microdesc);
@@ -517,7 +519,7 @@ helpers.hasGrail = function(hasGrail) {
 	console.log('======= pos.player =======')
 	console.log(pos.player);
 
-	if($('#player').position().top===$('#' + cities[indx].name).position().top && $('#player').position().left===$('#' + cities[indx].name).position().left )
+	if(($('#player').position().top===$('#' + cities[indx].name).position().top) && ($('#player').position().left===$('#' + cities[indx].name).position().left))
 		return 'here';
 	else if((pos.player.top>pos.grail.top-20) && (pos.player.top<pos.grail.top+20) && (pos.player.left<pos.grail.left))
 		return 'east';

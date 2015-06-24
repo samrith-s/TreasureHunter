@@ -37,7 +37,12 @@ config.cardholder = {
                 states: [
                     {
                         name: "default",
-                        representation: "<img class='card-img' src='' /><div class='card-name'></div><div class='card-type'></div><div class='card-desc'></div><div class='card-microdesc'></div>"
+                        representation: 
+                                    "<img class='card-img' src='' />" +  
+                                    "<div class='card-name'></div>" + 
+                                    "<div class='card-desc'></div>" + 
+                                    "<div class='card-microdesc'></div>" +
+                                    "<div class='card-use'></div>" 
                     }
                 ]
             });            

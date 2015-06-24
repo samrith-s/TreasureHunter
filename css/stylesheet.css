@@ -3,7 +3,7 @@
 
 body {
 	font-family: 'PT Sans Narrow', sans-serif;
-	font-size: 1vw;
+	font-size: 12px;
 	background: black;
 }
 
@@ -41,7 +41,7 @@ img {
 	content: attr(id);
 	color: #fff;
 	text-shadow: 0 2px #000;
-	font-size:3em;
+	font-size:1em;
 	position: relative;
 	top:0%;
 	width:auto;
@@ -152,72 +152,58 @@ img {
     transform: scale(1.1);
 }
 
+.card-use {
+	width:100%;
+	height:100%;
+	position: absolute;
+}
+
 .card-img {
+	width:25%;
 	height: 90%;
-	margin: 1.75%;
-	width: auto;
 	position: absolute;
-	display: inline-block;
 	border-radius: 5px;
-	left: 1%;
+	top:5%;
+	left: 2.5%;
+	border:2px solid #3e1614;
 }
 
-.card-desc {
-	font-size: 2.5em;
-	width: 62%;
-	border-radius: 5px;
-	padding: 1% 3% 0;
-	margin: 0;
-	left: 30%;
+.card-name, .card-desc, .card-microdesc {
 	position: absolute;
-	display: inline-block;
-	top: 39%;
-	background: rgba(1,1,1,0.3);
-	height: 30%;
-}
-
-.card-microdesc {
-	font-size: 2.3em;
-	width: 62%;
-	padding: 1% 3% 0;
-	margin: 0;
-	position: absolute;
-	display: inline-block;
-	top: 78%;
-	left: 30%;
-	background: rgba(1,1,1,0.2);
-	border-radius: 5px;
+	width:66.5%;
+	padding:1%;
+	left:30%;
+	border-radius:5px;
+	background:rgba(1,1,1,0.5);
 }
 
 .card-name {
-	font-weight: bolder;
-	font-size: 3em;
-	width: 62%;
-	padding: 1% 3%;
-	margin: 0;
-	position: absolute;
-	display: inline-block;
-	top: 7%;
-	left: 30%;
-	vertical-align: middle;
-	background: rgba(1,1,1,0.3);
-	border-radius: 5px;
-	color: #ffe100;
+	top: 5%;
+	height:22%;
+	font-size:1em;
+	text-align: middle;
 }
 
-.card-type {
-	font-weight: bold;
-	font-size: 2.5em;
-	width: auto;
-	padding: 1% 1% 0.5%;
-	margin: 0;
+.card-name:after {
+	content: attr(data-type);
 	position: absolute;
-	display: inline-block;
-	top: 10%;
-	right: 2.5%;
-	background: rgba(1,1,1,0.3);
-	border-radius: 5px;
-	height: auto;
+	right:2%;
+	padding:2%;
+	top:0;
+	font-size:0.7em;
+	background: rgba(1,1,1,0.5);
+}
+
+.card-desc {
+	top: 34%;
+	height:35%;
+	font-size:0.8em;
+}
+
+.card-microdesc {
+	top:75%;
+	height:20%;
+	font-size:0.7em;
 }
 
 #hud {
@@ -246,7 +232,6 @@ img {
 
 #health span, #gold span {
 	font-weight: bold;
-	font-size: 2em;
 	vertical-align: middle;
 	margin: 6%;	
 }
@@ -260,7 +245,7 @@ img {
   	border-radius: 5px;
   	padding: 2%;
   	left: 13%;
-  	font-size: 3.5em;
+  	font-size: 1.1em;
   	text-align: center;
   	cursor: pointer;
   	color: #fff;
@@ -275,7 +260,7 @@ img {
 }
 
 #quiz {
-	font-size: 4em;
+	font-size: 1em;
 	color: #fff;
 }
 
@@ -349,7 +334,7 @@ img {
 .message-button {
 	width: 20%;
 	margin: 3%;
-	font-size: 2.5em;
+	font-size: 1.1em;
 	position: absolute;
 	padding: 2%;
 	background: rgba(1,1,1,0.5);
@@ -372,7 +357,7 @@ img {
 	position: absolute;
 	top:15%;
 	left:18%;
-	font-size: 5em;
+	font-size: 2em;
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: 900;
@@ -387,7 +372,7 @@ img {
 	height:30%;
 	left:18%;
 	top: 32%;
-	font-size:4em;
+	font-size:1.2em;
 }
 
 
