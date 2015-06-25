@@ -287,6 +287,7 @@ img {
 	margin: 2% 5%;
 	text-align: center;
 	background: rgba(1,1,1,0.5);
+	cursor: pointer;
 }
 
 #options {

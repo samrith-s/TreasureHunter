@@ -114,6 +114,7 @@ init.player = function() {
 
 observers.cards = function(num, type, resources, quesbank, hasGrail) {
 	$('.card-item').eq(num).unbind('click').on('click', function() {
+		$('.card-use').hide();
 
 		$('.card-item').removeClass('greyscale-25 greyscale-50');
 		if(num===0) {
